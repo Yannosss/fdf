@@ -1,0 +1,28 @@
+guide install dans readme ici :
+https://github.com/42Paris/minilibx-linux/blob/master/README.md
+
+sudo apt-get install gcc make xorg libxext-dev libbsd-dev
+sudo apt install libx11-dev (pas sur de l utilite)
+sudo apt-get install libx11-dev xserver-xorg-dev xorg-dev (pas sur de l utilite)
+sudo apt-get install libbsd-dev (pas sur de l utilite)
+copier dans repertoire travail le dossier decompresse minilibx-linux
+lancer script parametrage : './configuration' dans le repertoire minilibx-linux
+
+facultatif : ajout man (recuperes ici https://github.com/42Paris/minilibx-linux ) dans /usr/share/man/.,.
+
+programme de test. A compiler avec :
+gcc main.c -I ./minilibx-linux/ -L ./minilibx-linux/ -lmlx -lX11 -lXext -lm -lz)
+
+#include <stdlib.h>
+#include "mlx.h"
+
+
+int main(void)
+{
+	void	*mlx;
+	void	*mlx_win;
+
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_loop(mlx);
+}

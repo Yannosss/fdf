@@ -4,6 +4,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include "mlx.h"
+# include "libft.h"
 
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
@@ -39,7 +40,7 @@ typedef struct s_pt
 }	t_pt;
 
 // main
-int		ft_draw(t_env *env);
+int		ft_draw_test_lines(t_env *env);
 void	ft_img_pixel_put(t_env *env, int x, int y, int color);
 
 // envent manager
@@ -51,6 +52,12 @@ int	ft_keypress_manager(int keysym, t_env *env);
 void	ft_print_line(t_env *env, t_pt pt_a, t_pt pt_b, int color);
 void	ft_print_line_case_1(t_env *env, t_pt pt_a, t_pt pt_b, int color);
 void	ft_print_line_case_2(t_env *env, t_pt pt_a, t_pt pt_b, int color);
+void	ft_print_line_case_3(t_env *env, t_pt pt_a, t_pt pt_b, int color);
+void	ft_print_line_case_4(t_env *env, t_pt pt_a, t_pt pt_b, int color);
+
+// init
+void	ft_init_env(t_env *env);
+void	ft_init_mlx(t_env *env);
 
 // exit
 void	ft_exit_mlx(t_env *env);

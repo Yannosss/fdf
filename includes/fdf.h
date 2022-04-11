@@ -1,6 +1,9 @@
 #ifndef FDF_H
 # define FDF_H
 # include <stdlib.h>
+// #include <sys/types.h> //util?
+// #include <sys/stat.h> //util?
+#include <fcntl.h> //util pour O_RDONLY
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include "mlx.h"
@@ -31,6 +34,8 @@ typedef struct s_env
 	void	*mlx;
 	void	*window;
 	t_img	img;
+	int		grid_width;
+	int		grid_height;
 }	t_env;
 
 typedef struct s_pt
@@ -42,6 +47,9 @@ typedef struct s_pt
 // main
 int		ft_draw_test_lines(t_env *env);
 void	ft_img_pixel_put(t_env *env, int x, int y, int color);
+
+// parsing input
+void ft_parse_input(t_env *env, char **argv);
 
 // envent manager
 void	ft_event_manager(t_env *env);
@@ -61,5 +69,6 @@ void	ft_init_mlx(t_env *env);
 
 // exit
 void	ft_exit_mlx(t_env *env);
+void	ft_get_grid_size(t_env *env, char **argv, int fd);
 
 #endif

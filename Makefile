@@ -9,6 +9,7 @@ SRCS += sources/exit.c
 SRCS += sources/init.c
 SRCS += sources/main.c
 SRCS += sources/print_pixel.c
+SRCS += sources/parsing_input.c
 
 OBJS = ${SRCS:.c=.o}
 

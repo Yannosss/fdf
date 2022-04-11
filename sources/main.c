@@ -13,9 +13,12 @@ int main(int argc, char **argv)
 		}
 
 	ft_init_env(&env);
+
+	ft_parse_input(&env, argv);
+
 	ft_init_mlx(&env);
 
-	// ft_read_input_size(&env, argv);
+
 
 	ft_draw_test_lines(&env);
 

@@ -16,11 +16,13 @@ int main(int argc, char **argv)
 
 	ft_parse_input(&env, argv);
 
+	ft_convert_grid_coordinates(&env);
+
 	ft_init_mlx(&env);
 
+	// ft_draw_test_lines(&env);
 
-
-	ft_draw_test_lines(&env);
+	ft_draw_grid(&env);
 
 	ft_event_manager(&env);
 	mlx_loop(env.mlx);
@@ -36,50 +38,50 @@ int main(int argc, char **argv)
 
 int	ft_draw_test_lines(t_env *env)
 {
-	t_pt pt_a;
-	t_pt pt_b;
-	pt_a.x = -5;
-	pt_a.y = 100;
-	pt_b.x = 5000;
-	pt_b.y = 150;
+	t_node pt_a;
+	t_node pt_b;
+	pt_a.x_screen = -5;
+	pt_a.y_screen = 100;
+	pt_b.x_screen = 5000;
+	pt_b.y_screen = 150;
 
 	ft_print_line(env, pt_a, pt_b, COLOR_RED);
 	// ft_print_line(env, pt_b, pt_a, COLOR_RED);
-	pt_a.x = 100;
-	pt_a.y = 100;
-	pt_b.x = 500;
-	pt_b.y = 50;
+	pt_a.x_screen = 100;
+	pt_a.y_screen = 100;
+	pt_b.x_screen = 500;
+	pt_b.y_screen = 50;
 	ft_print_line(env, pt_a, pt_b, COLOR_GREEN);
-	pt_a.x = 100;
-	pt_a.y = 100;
-	pt_b.x = 110;
-	pt_b.y = 5000;
+	pt_a.x_screen = 100;
+	pt_a.y_screen = 100;
+	pt_b.x_screen = 110;
+	pt_b.y_screen = 5000;
 	ft_print_line(env, pt_a, pt_b, COLOR_BLUE);
-	pt_a.x = 100;
-	pt_a.y = 100;
-	pt_b.x = 110;
-	pt_b.y = -30;
+	pt_a.x_screen = 100;
+	pt_a.y_screen = 100;
+	pt_b.x_screen = 110;
+	pt_b.y_screen = -30;
 	ft_print_line(env, pt_a, pt_b, COLOR_WHITE);
 
-	pt_a.x = 100;
-	pt_a.y = 100;
-	pt_b.x = 10;
-	pt_b.y = 110;
+	pt_a.x_screen = 100;
+	pt_a.y_screen = 100;
+	pt_b.x_screen = 10;
+	pt_b.y_screen = 110;
 	ft_print_line(env, pt_a, pt_b, COLOR_RED);
-	pt_a.x = 100;
-	pt_a.y = 100;
-	pt_b.x = 10;
-	pt_b.y = 90;
+	pt_a.x_screen = 100;
+	pt_a.y_screen = 100;
+	pt_b.x_screen = 10;
+	pt_b.y_screen = 90;
 	ft_print_line(env, pt_a, pt_b, COLOR_GREEN);
-	pt_a.x = 100;
-	pt_a.y = 100;
-	pt_b.x = 90;
-	pt_b.y = 500;
+	pt_a.x_screen = 100;
+	pt_a.y_screen = 100;
+	pt_b.x_screen = 90;
+	pt_b.y_screen = 500;
 	ft_print_line(env, pt_a, pt_b, COLOR_BLUE);
-	pt_a.x = 100;
-	pt_a.y = 100;
-	pt_b.x = 90;
-	pt_b.y = 30;
+	pt_a.x_screen = 100;
+	pt_a.y_screen = 100;
+	pt_b.x_screen = 90;
+	pt_b.y_screen = 30;
 	ft_print_line(env, pt_a, pt_b, COLOR_WHITE);
 	mlx_put_image_to_window(env->mlx, env->window, env->img.img_pt, 0, 0);
 

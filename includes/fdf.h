@@ -6,11 +6,17 @@
 #include <fcntl.h> //util pour O_RDONLY
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <math.h>
 # include "mlx.h"
 # include "libft.h"
 
+# include <stdio.h>
+
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
+
+# define XY_SCALE_FACTOR 20
+# define Z_SCALE_FACTOR 2
 
 # define MLX_ERROR 1
 
@@ -29,27 +35,40 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+
+typedef struct s_node
+{
+	int	x_grid;
+	int	y_grid;
+	int z_grid;
+	int x_screen;
+	int y_screen;
+}	t_node;
+
 typedef struct s_env
 {
+	char	*file_name;
 	void	*mlx;
 	void	*window;
 	t_img	img;
+	char	*read_line;
 	int		grid_width;
 	int		grid_height;
-}	t_env;
+	t_node		**grid;
 
-typedef struct s_pt
-{
-	int	x;
-	int	y;
-}	t_pt;
+}	t_env;
 
 // main
 int		ft_draw_test_lines(t_env *env);
 void	ft_img_pixel_put(t_env *env, int x, int y, int color);
 
 // parsing input
-void ft_parse_input(t_env *env, char **argv);
+void	ft_parse_input(t_env *env, char **argv);
+void	ft_get_grid_size(t_env *env);
+int		ft_nb_of_elements_on_line(t_env *env, char *line);
+void	ft_get_grid_values(t_env *env);
+
+
 
 // envent manager
 void	ft_event_manager(t_env *env);
@@ -57,18 +76,35 @@ void	ft_event_manager(t_env *env);
 int	ft_keypress_manager(int keysym, t_env *env);
 
 // bresenham
-void	ft_print_line(t_env *env, t_pt pt_a, t_pt pt_b, int color);
-void	ft_print_line_case_1(t_env *env, t_pt pt_a, t_pt pt_b, int color);
-void	ft_print_line_case_2(t_env *env, t_pt pt_a, t_pt pt_b, int color);
-void	ft_print_line_case_3(t_env *env, t_pt pt_a, t_pt pt_b, int color);
-void	ft_print_line_case_4(t_env *env, t_pt pt_a, t_pt pt_b, int color);
+void	ft_print_line(t_env *env, t_node pt_a, t_node pt_b, int color);
+void	ft_print_line_case_1(t_env *env, t_node pt_a, t_node pt_b, int color);
+void	ft_print_line_case_2(t_env *env, t_node pt_a, t_node pt_b, int color);
+void	ft_print_line_case_3(t_env *env, t_node pt_a, t_node pt_b, int color);
+void	ft_print_line_case_4(t_env *env, t_node pt_a, t_node pt_b, int color);
 
 // init
 void	ft_init_env(t_env *env);
 void	ft_init_mlx(t_env *env);
+void	ft_init_grid(t_env *env);
+
+// convert coordinate
+void	ft_convert_grid_coordinates(t_env *env);
+void	ft_convert_node_coordinate(t_node *node);
+
+// draw grid
+void	ft_draw_grid(t_env *env);
+void	ft_draw_horizontal_lines(t_env *env);
+void	ft_draw_vertical_lines(t_env *env);
+
 
 // exit
 void	ft_exit_mlx(t_env *env);
-void	ft_get_grid_size(t_env *env, char **argv, int fd);
+
+// debug a sup
+void ft_print_env(t_env *env); // a sup dans .h
+
+//
+
+
 
 #endif

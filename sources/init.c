@@ -27,3 +27,30 @@ void	ft_init_mlx(t_env *env)
 	env->img.addr = mlx_get_data_addr(env->img.img_pt, &(env->img.bpp), &(env->img.line_len), &(env->img.endian));
 	// ft_img_pixel_put(env , WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, COLOR_GREEN);
 }
+
+void	ft_init_grid(t_env *env)
+{
+	int	x;
+	int y;
+	env->grid = malloc(sizeof(int*) * env->grid_width);
+	if (!env->grid)
+		ft_exit_mlx(env);
+	x = 0;
+	while (x < env->grid_width)
+	{
+		env->grid[x] = malloc(sizeof(t_node) * env->grid_height);
+		if (!env->grid[x])
+			ft_exit_mlx(env);
+		y = 0;
+		while (y < env->grid_height)
+		{
+			env->grid[x][y].x_grid = 0;
+			env->grid[x][y].y_grid = 0;
+			env->grid[x][y].z_grid = 0;
+			y++;
+		}
+		x++;
+	}
+	if (!env->grid)
+		ft_exit_mlx(env);
+}

@@ -10,6 +10,12 @@ SRCS += sources/init.c
 SRCS += sources/main.c
 SRCS += sources/print_pixel.c
 SRCS += sources/parsing_input.c
+SRCS += sources/convert_coordinates.c
+SRCS += sources/draw_grid.c
+
+
+
+SRCS += sources/debug.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -60,3 +66,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+.SILENT:

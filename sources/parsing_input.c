@@ -92,8 +92,8 @@ void ft_get_grid_values(t_env *env)
 		x = 0;
 		while (x < env->grid_width)
 		{
-			env->grid[x][y].x_grid = x * XY_SCALE_FACTOR;
-			env->grid[x][y].y_grid = y * XY_SCALE_FACTOR;
+			env->grid[x][y].x_grid = (x - env->grid_width / 2) * XY_SCALE_FACTOR;
+			env->grid[x][y].y_grid = (y - env->grid_height / 2) * XY_SCALE_FACTOR;
 			env->grid[x][y].z_grid = ft_atoi(splitted_line[x]) * Z_SCALE_FACTOR;
 			printf("pt %d %d : %d %d %d\n", x, y, env->grid[x][y].x_grid, env->grid[x][y].y_grid, env->grid[x][y].z_grid);
 			x++;

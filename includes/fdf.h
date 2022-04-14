@@ -15,7 +15,7 @@
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
 
-# define XY_SCALE_FACTOR 20
+# define XY_SCALE_FACTOR 10
 # define Z_SCALE_FACTOR 2
 
 # define MLX_ERROR 1
@@ -41,8 +41,13 @@ typedef struct s_node
 	int	x_grid;
 	int	y_grid;
 	int z_grid;
+	int	x_rot;
+	int	y_rot;
+	int z_rot;
 	int x_screen;
 	int y_screen;
+
+
 }	t_node;
 
 typedef struct s_env
@@ -55,6 +60,15 @@ typedef struct s_env
 	int		grid_width;
 	int		grid_height;
 	t_node		**grid;
+
+	int	trim_x;
+	int	trim_y;
+
+	int	trim_r;
+	int	trim_th;
+	int	trim_p;
+
+	int	trim_zoom;
 
 }	t_env;
 
@@ -89,10 +103,11 @@ void	ft_init_grid(t_env *env);
 
 // convert coordinate
 void	ft_convert_grid_coordinates(t_env *env);
-void	ft_convert_node_coordinate(t_node *node);
+void	ft_convert_node_coordinate(t_env *env, t_node *node);
 
 // draw grid
 void	ft_draw_grid(t_env *env);
+void	ft_draw_black_screen(t_env *env);
 void	ft_draw_horizontal_lines(t_env *env);
 void	ft_draw_vertical_lines(t_env *env);
 

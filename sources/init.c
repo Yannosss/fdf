@@ -9,6 +9,15 @@ void	ft_init_env(t_env *env)
 	env->img.bpp = 0;
 	env->img.line_len = 0;
 	env->img.endian = 0;
+
+	env->trim_x = 0;
+	env->trim_y = 0;
+
+	env->trim_r = 0;
+	env->trim_th = 0;
+	env->trim_p = 0;
+
+	env->trim_zoom = 0;
 	// TBD a check a la fin
 }
 

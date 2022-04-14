@@ -2,6 +2,7 @@
 
 void	ft_init_env(t_env *env)
 {
+	env->file_name = NULL;
 	env->mlx = NULL;
 	env->window = NULL;
 	env->img.img_pt = NULL;
@@ -9,26 +10,23 @@ void	ft_init_env(t_env *env)
 	env->img.bpp = 0;
 	env->img.line_len = 0;
 	env->img.endian = 0;
-
+	env->read_line = NULL;
+	env->grid_width = 0;
+	env->grid_height = 0;
+	env->grid = NULL;
 	env->trim_x = 0;
 	env->trim_y = 0;
-
 	env->trim_r = 0;
 	env->trim_th = 0;
 	env->trim_p = 0;
-
 	env->trim_zoom = 1;
-
-
 	env->color_list[0] = COLOR_WHITE;
 	env->color_list[1] = COLOR_RED;
 	env->color_list[2] = COLOR_GREEN;
 	env->color_list[3] = COLOR_BLUE;
 	env->color_list[4] = COLOR_ORANGE;
 	env->indice_chosen_color = 0;
-
 	env->chosen_color = env->color_list[env->indice_chosen_color];
-	// TBD a check a la fin
 }
 
 void	ft_init_mlx(t_env *env)
@@ -44,7 +42,6 @@ void	ft_init_mlx(t_env *env)
 	if (env->img.img_pt == NULL)
 		ft_exit_mlx(env);
 	env->img.addr = mlx_get_data_addr(env->img.img_pt, &(env->img.bpp), &(env->img.line_len), &(env->img.endian));
-	// ft_img_pixel_put(env , WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, COLOR_GREEN);
 }
 
 void	ft_init_grid(t_env *env)

@@ -93,14 +93,14 @@ void	ft_zoom_trim_manager(int key, t_env *env)
 		{
 			if (env->trim_zoom < 1000)
 			{
-			env->trim_zoom *= 2;
+			env->trim_zoom *= 1.2;
 			}
 		}
 	if (key == XK_f)
 		{
 			if (env->trim_zoom > 0.0001)
 			{
-			env->trim_zoom /= 2;
+			env->trim_zoom /= 1.2;
 			}
 		}
 	ft_draw_grid(env);
@@ -115,6 +115,7 @@ void	ft_color_trim_manager(int key, t_env *env)
 				env->indice_chosen_color = 0;
 		}
 	env->chosen_color = env->color_list[env->indice_chosen_color];
+	ft_draw_grid(env);
 }
 // int	handle_no_event(void *data)
 // {

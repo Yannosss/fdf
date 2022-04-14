@@ -68,16 +68,12 @@ typedef struct s_env
 	int		grid_width;
 	int		grid_height;
 	t_node		**grid;
-
 	int	trim_x;
 	int	trim_y;
-
 	int	trim_r;
 	int	trim_th;
 	int	trim_p;
-
 	float	trim_zoom;
-
 	int color_list[5];
 	int indice_chosen_color;
 	int chosen_color;
@@ -134,6 +130,8 @@ void	ft_draw_vertical_lines(t_env *env);
 
 // exit
 void	ft_exit_mlx(t_env *env);
+void	ft_free_mlx(t_env *env);
+void	ft_free_grid(t_env *env);
 
 // debug a sup
 void ft_print_env(t_env *env); // a sup dans .h

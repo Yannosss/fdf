@@ -2,7 +2,8 @@
 
 void	ft_parse_input(t_env *env, char **argv)
 {
-	env->file_name = ft_strdup(argv[1]);
+	// env->file_name = ft_strdup(argv[1]);
+	env->file_name = argv[1];
 
 	ft_get_grid_size(env);
 	ft_init_grid(env);

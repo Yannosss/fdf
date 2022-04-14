@@ -24,22 +24,22 @@ void	ft_convert_node_coordinate(t_env *env, t_node *node)
 	float t = env->trim_th * 3.14 / 180;
 	float p = env->trim_p * 3.14 / 180;
 
-	// node->x_grid = node->x_grid * 2;
-	// node->y_grid = node->z_grid * 2;
-	// node->y_grid = node->z_grid * 2;
+	node->x_grid_zoom = node->x_grid * env->trim_zoom;
+	node->y_grid_zoom = node->y_grid * env->trim_zoom;
+	node->z_grid_zoom = node->z_grid * env->trim_zoom;
 
 	// rotations
-	node->x_rot = node->x_grid * (cos(r) * cos(p) - sin(r) * cos(t) * sin(p)) +
-					node->y_grid * (-1 * cos(r) * sin(p) - sin(r) * cos(t) * cos(p)) +
-					node->z_grid * (sin(r) * sin(t));
+	node->x_rot = node->x_grid_zoom * (cos(r) * cos(p) - sin(r) * cos(t) * sin(p)) +
+					node->y_grid_zoom * (-1 * cos(r) * sin(p) - sin(r) * cos(t) * cos(p)) +
+					node->z_grid_zoom * (sin(r) * sin(t));
 
-	node->y_rot = node->x_grid * (sin(r) * cos(p) + cos(r) * cos(t) * sin(p)) +
-					node->y_grid * (-1 * sin(r) * sin(p) + cos(r) * cos(t) * cos(p)) +
-					node->z_grid * (-1 * cos(r) * sin(t));
+	node->y_rot = node->x_grid_zoom * (sin(r) * cos(p) + cos(r) * cos(t) * sin(p)) +
+					node->y_grid_zoom * (-1 * sin(r) * sin(p) + cos(r) * cos(t) * cos(p)) +
+					node->z_grid_zoom * (-1 * cos(r) * sin(t));
 
-	node->z_rot = node->x_grid * (sin(t) * sin (p)) +
-					node->y_grid * (sin(t) * cos (p)) +
-					node->z_grid * cos (t);
+	node->z_rot = node->x_grid_zoom * (sin(t) * sin (p)) +
+					node->y_grid_zoom * (sin(t) * cos (p)) +
+					node->z_grid_zoom * cos (t);
 
 	// projection iso
 	node->x_screen = (node->x_rot - node->y_rot) * cos(0.523599) + WINDOW_WIDTH / 2;

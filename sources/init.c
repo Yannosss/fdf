@@ -17,7 +17,17 @@ void	ft_init_env(t_env *env)
 	env->trim_th = 0;
 	env->trim_p = 0;
 
-	env->trim_zoom = 0;
+	env->trim_zoom = 1;
+
+
+	env->color_list[0] = COLOR_WHITE;
+	env->color_list[1] = COLOR_RED;
+	env->color_list[2] = COLOR_GREEN;
+	env->color_list[3] = COLOR_BLUE;
+	env->color_list[4] = COLOR_ORANGE;
+	env->indice_chosen_color = 0;
+
+	env->chosen_color = env->color_list[env->indice_chosen_color];
 	// TBD a check a la fin
 }
 

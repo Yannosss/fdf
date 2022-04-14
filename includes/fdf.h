@@ -19,11 +19,13 @@
 # define Z_SCALE_FACTOR 2
 
 # define MLX_ERROR 1
+# define ON_DESTROY 17
 
+# define COLOR_WHITE 0xFFFFFF
 # define COLOR_RED 0xFF0000
 # define COLOR_GREEN 0x00FF00
 # define COLOR_BLUE 0x0000FF
-# define COLOR_WHITE 0xFFFFFF
+# define COLOR_ORANGE 0xFF8000
 # define COLOR_BLACK 0x000000
 
 typedef struct s_img
@@ -41,9 +43,15 @@ typedef struct s_node
 	int	x_grid;
 	int	y_grid;
 	int z_grid;
+
+	int	x_grid_zoom;
+	int	y_grid_zoom;
+	int z_grid_zoom;
+
 	int	x_rot;
 	int	y_rot;
 	int z_rot;
+
 	int x_screen;
 	int y_screen;
 
@@ -68,7 +76,11 @@ typedef struct s_env
 	int	trim_th;
 	int	trim_p;
 
-	int	trim_zoom;
+	float	trim_zoom;
+
+	int color_list[5];
+	int indice_chosen_color;
+	int chosen_color;
 
 }	t_env;
 
@@ -86,8 +98,16 @@ void	ft_get_grid_values(t_env *env);
 
 // envent manager
 void	ft_event_manager(t_env *env);
-// int	handle_no_event(void *data);
-int	ft_keypress_manager(int keysym, t_env *env);
+int	ft_exit_cross_pressed(t_env *env);
+int	ft_keypress_manager(int key, t_env *env);
+void	ft_escape_manager(int key, t_env *env);
+void	ft_translation_trim_manager(int key, t_env *env);
+void	ft_rotation_trim_manager(int key, t_env *env);
+void	ft_zoom_trim_manager(int key, t_env *env);
+void	ft_color_trim_manager(int key, t_env *env);
+
+
+
 
 // bresenham
 void	ft_print_line(t_env *env, t_node pt_a, t_node pt_b, int color);

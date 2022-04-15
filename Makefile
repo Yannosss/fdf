@@ -28,6 +28,7 @@ LIB_INCLUDE = -L ./libft -lft -L ./minilibx-linux/ -lmlx -lX11 -lXext -lm -lz
 
 # Compilateurs
 CC = gcc
+CFLAGS = -g3
 #CFLAGS = -Wall -Wextra -Werror
 
 ##########   Cst mise en forme   ##########

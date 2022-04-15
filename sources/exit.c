@@ -9,6 +9,12 @@ void	ft_exit_mlx(t_env *env)
 		free(env->read_line);
 		env->read_line = NULL;
 	}
+	if (env->splitted_line)
+	{
+		ft_free_split(env->splitted_line);
+		env->splitted_line = NULL;
+	}
+	ft_free_grid(env);
 
 
 	exit(0);
@@ -38,5 +44,20 @@ void	ft_free_mlx(t_env *env)
 
 void	ft_free_grid(t_env *env)
 {
+	int	i;
 
+	if (env->grid)
+	{
+		i = 0;
+		while (i < env->grid_width)
+		{
+			if (env->grid[i])
+				{
+					free(env->grid[i]);
+					env->grid[i] = NULL;
+				}
+			i++;
+		}
+		free(env->grid);
+	}
 }

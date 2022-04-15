@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybellot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:39:33 by ybellot           #+#    #+#             */
-/*   Updated: 2021/12/13 09:01:38 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/15 11:34:11 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,8 @@ void	ft_translat_buffer(char *buf, int nb);
 size_t	ft_buflen(char *str);
 char	*ft_initbuffer(char *buf);
 int		ft_has_eol(char *str);
+
+// ajouts
+void	ft_free_split(char ** split_result);
 
 #endif

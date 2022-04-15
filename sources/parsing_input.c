@@ -87,21 +87,21 @@ void ft_get_grid_values(t_env *env)
 	while (y < env->grid_height)
 	{
 		env->read_line = get_next_line(fd_file);
-		splitted_line = ft_split(env->read_line, ' ');
-		if (!splitted_line)
+		env->splitted_line = ft_split(env->read_line, ' ');
+		if (!env->splitted_line)
 			ft_exit_mlx(env);
 		x = 0;
 		while (x < env->grid_width)
 		{
 			env->grid[x][y].x_grid = (x - env->grid_width / 2) * XY_SCALE_FACTOR;
 			env->grid[x][y].y_grid = (y - env->grid_height / 2) * XY_SCALE_FACTOR;
-			env->grid[x][y].z_grid = ft_atoi(splitted_line[x]) * Z_SCALE_FACTOR;
+			env->grid[x][y].z_grid = ft_atoi(env->splitted_line[x]) * Z_SCALE_FACTOR;
 			printf("pt %d %d : %d %d %d\n", x, y, env->grid[x][y].x_grid, env->grid[x][y].y_grid, env->grid[x][y].z_grid);
 			x++;
 		}
 		y++;
 
 	}
-		ft_print_env(env);
+	close (fd_file);
 }
 

@@ -48,9 +48,15 @@ void	ft_init_grid(t_env *env)
 {
 	int	x;
 	int y;
-	env->grid = malloc(sizeof(int*) * env->grid_width);
+	env->grid = malloc(sizeof(t_node*) * env->grid_width);
 	if (!env->grid)
 		ft_exit_mlx(env);
+	x = 0;
+	while (x < env->grid_width)
+	{
+		env->grid[x] = NULL;
+		x++;
+	}
 	x = 0;
 	while (x < env->grid_width)
 	{

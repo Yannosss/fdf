@@ -65,6 +65,7 @@ typedef struct s_env
 	void	*window;
 	t_img	img;
 	char	*read_line;
+	char	**splitted_line;
 	int		grid_width;
 	int		grid_height;
 	t_node		**grid;

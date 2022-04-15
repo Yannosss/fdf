@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ybellot <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/05 17:41:42 by ybellot           #+#    #+#              #
-#    Updated: 2021/12/13 08:54:34 by ybellot          ###   ########.fr        #
+#    Updated: 2022/04/15 11:33:42 by ybellot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ ft_putendl_fd.c \
 ft_putnbr_fd.c \
 get_next_line.c \
 get_next_line_utils.c \
+ft_free_split.c \
 
 OBJS = ${SRCS:.c=.o}
 

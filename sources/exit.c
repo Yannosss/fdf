@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:07:12 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/16 12:07:36 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/16 18:53:50 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,26 @@ void	ft_exit_mlx(t_env *env, char *message)
 		ft_free_split(env->splitted_line);
 		env->splitted_line = NULL;
 	}
-	ft_free_grid(env);
+	if (env->grid)
+		ft_free_grid(env);
 	exit(0);
 }
 
 void	ft_free_mlx(t_env *env)
 {
-	if (env->window)
-	{
-		if (env->img.img_pt)
-		{
-			mlx_destroy_image(env->mlx, env->img.img_pt);
-			env->img.img_pt = NULL;
-			env->img.addr = NULL;
-		}
-		mlx_destroy_window(env->mlx, env->window);
-		env->window = NULL;
-	}
 	if (env->mlx)
 	{
+		if (env->window)
+		{
+			if (env->img.img_pt)
+			{
+				mlx_destroy_image(env->mlx, env->img.img_pt);
+				env->img.img_pt = NULL;
+				env->img.addr = NULL;
+			}
+			mlx_destroy_window(env->mlx, env->window);
+			env->window = NULL;
+		}
 		mlx_destroy_display(env->mlx);
 		free(env->mlx);
 		env->mlx = NULL;

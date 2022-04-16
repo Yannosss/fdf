@@ -4,13 +4,16 @@ void	ft_free_split(char **split_result)
 {
 	int	i;
 
-	i = 0;
-	while (split_result[i])
+	if (split_result)
 	{
-		free(split_result[i]);
-		split_result[i] = NULL;
-		i++;
+		i = 0;
+		while (split_result[i])
+		{
+			free(split_result[i]);
+			split_result[i] = NULL;
+			i++;
+		}
+		free(split_result);
+		split_result = NULL;
 	}
-	free(split_result);
-	split_result = NULL;
 }

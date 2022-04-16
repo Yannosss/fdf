@@ -5,6 +5,8 @@ NAME = fdf
 # Sources
 SRCS += sources/bresenham.c
 SRCS += sources/event_manager.c
+SRCS += sources/event_fonctions_1.c
+SRCS += sources/event_fonctions_2.c
 SRCS += sources/exit.c
 SRCS += sources/init.c
 SRCS += sources/main.c
@@ -12,10 +14,6 @@ SRCS += sources/print_pixel.c
 SRCS += sources/parsing_input.c
 SRCS += sources/convert_coordinates.c
 SRCS += sources/draw_grid.c
-
-
-
-SRCS += sources/debug.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -28,8 +26,8 @@ LIB_INCLUDE = -L ./libft -lft -L ./minilibx-linux/ -lmlx -lX11 -lXext -lm -lz
 
 # Compilateurs
 CC = gcc
-CFLAGS = -g3
-#CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -g
+CFLAGS = -Wall -Wextra -Werror
 
 ##########   Cst mise en forme   ##########
 _END=$'\x1b[0m

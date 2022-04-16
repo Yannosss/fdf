@@ -25,3 +25,7 @@ void ft_print_env(t_env *env) // a sup dans .h
 	}
 
 }
+
+// exec
+// clear && make re && valgrind --leak-check=full --show-leak-kinds=all ./fdf 42.fdf
+

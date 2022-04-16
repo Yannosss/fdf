@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybellot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 17:42:23 by ybellot           #+#    #+#             */
-/*   Updated: 2022/01/06 17:32:19 by ybellot          ###   ########.fr       */
+/*   Created: 2022/04/15 14:29:00 by ybellot           #+#    #+#             */
+/*   Updated: 2022/04/15 21:21:19 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,21 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*buf;
+	static char	buf[1024][BUFFER_SIZE];
 	char		*line;
 
-	if (BUFFER_SIZE < 0)
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE < 0)
 		return (NULL);
-	if (buf == NULL)
-	{
-		buf = (char *)malloc(sizeof(char) * BUFFER_SIZE);
-		if (!buf)
-			return (NULL);
-		ft_initbuffer(buf);
-	}
+	if (buf[fd] == NULL)
+		ft_initbuffer(buf[fd]);
 	line = (char *)malloc(sizeof(char) * 1);
 	if (!line)
 		return (NULL);
 	line[0] = 0;
-	return (ft_gnl_algo(fd, &buf, &line));
+	return (ft_gnl_algo(fd, &buf[fd], &line));
 }
 
-char	*ft_gnl_algo(int fd, char **buf, char **line)
+char	*ft_gnl_algo(int fd, char (*buf)[BUFFER_SIZE], char **line)
 {
 	ssize_t		nb_read;
 
@@ -44,8 +39,6 @@ char	*ft_gnl_algo(int fd, char **buf, char **line)
 		nb_read = read(fd, *buf, BUFFER_SIZE);
 		if (nb_read == -1)
 		{
-			free(*buf);
-			*buf = NULL;
 			free(*line);
 			return (NULL);
 		}
@@ -53,8 +46,6 @@ char	*ft_gnl_algo(int fd, char **buf, char **line)
 	ft_translat_buffer(*buf, ft_cpy_bufftoline(line, *buf));
 	if (nb_read != BUFFER_SIZE && *buf[0] == 0 && *line[0] == 0)
 	{
-		free(*buf);
-		*buf = NULL;
 		free(*line);
 		return (NULL);
 	}

@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 
 	ft_event_manager(&env);
 	mlx_loop(env.mlx);
-	ft_exit_mlx(&env);
+	ft_exit_mlx(&env, NULL);
 	// mlx_destroy_window(env.mlx, env.window);
 	// mlx_destroy_display(env.mlx);
 	// free(env.mlx);

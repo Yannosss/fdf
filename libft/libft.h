@@ -6,14 +6,14 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:39:33 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/15 11:34:11 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/15 21:20:55 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
+#  define BUFFER_SIZE 100
 # endif
 # include <stdlib.h>
 # include <unistd.h>
@@ -72,7 +72,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //gnl
 char	*get_next_line(int fd);
-char	*ft_gnl_algo(int fd, char **buf, char **line);
+char	*ft_gnl_algo(int fd, char (*buf)[BUFFER_SIZE], char **line);
 int		ft_cpy_bufftoline(char **line, char *buff);
 int		ft_cpy_line_and_buff(char *dst, char *src, char *buff);
 void	ft_translat_buffer(char *buf, int nb);

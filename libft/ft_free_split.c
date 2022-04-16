@@ -1,9 +1,10 @@
 #include "libft.h"
 
-void	ft_free_split(char ** split_result)
+void	ft_free_split(char **split_result)
 {
 	int	i;
 
+	i = 0;
 	while (split_result[i])
 	{
 		free(split_result[i]);

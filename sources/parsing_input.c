@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_input.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/16 12:56:56 by ybellot           #+#    #+#             */
+/*   Updated: 2022/04/16 13:05:26 by ybellot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	ft_parse_input(t_env *env, char **argv)
@@ -8,10 +20,9 @@ void	ft_parse_input(t_env *env, char **argv)
 	ft_get_grid_values(env);
 }
 
-
 void	ft_get_grid_size(t_env *env)
 {
-	int fd_file;
+	int	fd_file;
 
 	fd_file = open(env->file_name, O_RDONLY);
 	if (fd_file == -1)
@@ -34,8 +45,8 @@ void	ft_get_grid_size(t_env *env)
 
 int	ft_nb_of_elements_on_line(t_env *env, char *line)
 {
-	int nb_of_elements;
-	int previous_is_space;
+	int	nb_of_elements;
+	int	previous_is_space;
 
 	previous_is_space = 1;
 	nb_of_elements = 0;
@@ -55,10 +66,9 @@ int	ft_nb_of_elements_on_line(t_env *env, char *line)
 	return (nb_of_elements);
 }
 
-void ft_get_grid_values(t_env *env)
+void	ft_get_grid_values(t_env *env)
 {
-	int fd_file;
-	int	x;
+	int	fd_file;
 	int	y;
 
 	fd_file = open(env->file_name, O_RDONLY);
@@ -71,14 +81,7 @@ void ft_get_grid_values(t_env *env)
 		env->splitted_line = ft_split(env->read_line, ' ');
 		if (!env->splitted_line)
 			ft_exit_mlx(env, "error: split function");
-		x = 0;
-		while (x < env->grid_width)
-		{
-			env->grid[x][y].x_grid = (x - env->grid_width / 2) * XY_SCALE_FACTOR;
-			env->grid[x][y].y_grid = (y - env->grid_height / 2) * XY_SCALE_FACTOR;
-			env->grid[x][y].z_grid = ft_atoi(env->splitted_line[x]) * Z_SCALE_FACTOR;
-			x++;
-		}
+		ft_get_grid_line(env, y);
 		ft_free_split(env->splitted_line);
 		env->splitted_line = NULL;
 		free(env->read_line);
@@ -86,4 +89,21 @@ void ft_get_grid_values(t_env *env)
 		y++;
 	}
 	close (fd_file);
+}
+
+void	ft_get_grid_line(t_env *env, int y)
+{
+	int	x;
+
+	x = 0;
+	while (x < env->grid_width)
+	{
+		env->grid[x][y].x_grid = (x - env->grid_width / 2)
+			* XY_SCALE_FACTOR;
+		env->grid[x][y].y_grid = (y - env->grid_height / 2)
+			* XY_SCALE_FACTOR;
+		env->grid[x][y].z_grid = ft_atoi(env->splitted_line[x])
+			* Z_SCALE_FACTOR;
+		x++;
+	}
 }

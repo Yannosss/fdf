@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 11:13:43 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/16 12:10:45 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/16 13:04:28 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	ft_parse_input(t_env *env, char **argv);
 void	ft_get_grid_size(t_env *env);
 int		ft_nb_of_elements_on_line(t_env *env, char *line);
 void	ft_get_grid_values(t_env *env);
+void	ft_get_grid_line(t_env *env, int y);
 
 // envent manager
 void	ft_event_manager(t_env *env);

@@ -1,15 +1,28 @@
-#include "fdf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/16 13:07:38 by ybellot           #+#    #+#             */
+/*   Updated: 2022/04/16 13:08:28 by ybellot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "fdf.h"
 #include <stdio.h>
 
-void ft_print_env(t_env *env) // a sup dans .h
+void	ft_print_env(t_env *env)
 {
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
 	printf("grid_width: %d\n", env->grid_width);
 	printf("grid_height: %d\n", env->grid_height);
-
 	printf("grid_values:\n");
-	int x = 0;
-	int y = 0;
 	while (y < env->grid_height)
 	{
 		x = 0;
@@ -19,13 +32,6 @@ void ft_print_env(t_env *env) // a sup dans .h
 			x++;
 		}
 		printf("\n");
-
 		y++;
-
 	}
-
 }
-
-// exec
-// clear && make re && valgrind --leak-check=full --show-leak-kinds=all ./fdf 42.fdf
-

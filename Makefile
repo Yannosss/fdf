@@ -15,7 +15,20 @@ SRCS += sources/parsing_input.c
 SRCS += sources/convert_coordinates.c
 SRCS += sources/draw_grid.c
 
+SRCS_BONUS += sources/bresenham.c
+SRCS_BONUS += sources/event_manager_bonus.c
+SRCS_BONUS += sources/event_fonctions_1.c
+SRCS_BONUS += sources/event_fonctions_2.c
+SRCS_BONUS += sources/exit.c
+SRCS_BONUS += sources/init.c
+SRCS_BONUS += sources/main.c
+SRCS_BONUS += sources/print_pixel.c
+SRCS_BONUS += sources/parsing_input.c
+SRCS_BONUS += sources/convert_coordinates.c
+SRCS_BONUS += sources/draw_grid.c
+
 OBJS = ${SRCS:.c=.o}
+OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 
 HEADER += includes/fdf.h
 HEADER += libft/libft.h
@@ -48,14 +61,19 @@ _WHITE=$'\x1b[37m
 all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADER)
-	make -C ./libft bonus
-	${CC} ${SRCS} -o ${NAME} ${CFLAGS} ${INCLUDES_DIR} ${LIB_INCLUDE}
+	make -C ./libft all
+	${CC} ${OBJS} -o ${NAME} ${CFLAGS} ${INCLUDES_DIR} ${LIB_INCLUDE}
+
+bonus: $(OBJS_BONUS) $(HEADER)
+	make -C ./libft all
+	${CC} ${OBJS_BONUS} -o ${NAME} ${CFLAGS} ${INCLUDES_DIR} ${LIB_INCLUDE}
 
 %.o: %.c $(HEADER)
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES_DIR)
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(OBJS_BONUS)
 	make -C ./libft clean
 
 fclean: clean

@@ -6,7 +6,7 @@
 #    By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/05 17:41:42 by ybellot           #+#    #+#              #
-#    Updated: 2022/04/15 11:33:42 by ybellot          ###   ########.fr        #
+#    Updated: 2022/04/18 17:56:25 by ybellot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,10 +54,7 @@ ft_putnbr_fd.c \
 get_next_line.c \
 get_next_line_utils.c \
 ft_free_split.c \
-
-OBJS = ${SRCS:.c=.o}
-
-SRCS_BONUS = ft_lstnew.c \
+ft_lstnew.c \
 ft_lstadd_front.c \
 ft_lstsize.c \
 ft_lstlast.c \
@@ -67,7 +64,7 @@ ft_lstclear.c \
 ft_lstiter.c \
 ft_lstmap.c \
 
-OBJS_BONUS = ${SRCS_BONUS:.c=.o}
+OBJS = ${SRCS:.c=.o}
 
 # Compilateurs
 CC = gcc
@@ -78,9 +75,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS) libft.h
 	ar rc $(NAME) $(OBJS)
-
-bonus: $(OBJS) $(OBJS_BONUS) libft.h
-	ar rc $(NAME) $(OBJS) $(OBJS_BONUS)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)

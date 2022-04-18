@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_manager.c                                    :+:      :+:    :+:   */
+/*   event_manager_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 11:51:08 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/18 17:47:31 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/18 17:47:57 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,9 @@ int	ft_exit_cross_pressed(t_env *env)
 int	ft_keypress_manager(int key, t_env *env)
 {
 	ft_escape_manager(key, env);
+	ft_translation_trim_manager(key, env);
+	ft_rotation_trim_manager(key, env);
+	ft_zoom_trim_manager(key, env);
+	ft_color_trim_manager(key, env);
 	return (0);
 }

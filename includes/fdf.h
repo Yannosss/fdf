@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 11:13:43 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/18 11:49:02 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/18 23:19:55 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_node
 
 	int	x_screen;
 	int	y_screen;
+
+	int	color;
 }	t_node;
 
 typedef struct s_env
@@ -73,6 +75,7 @@ typedef struct s_env
 	t_img	img;
 	char	*read_line;
 	char	**splitted_line;
+	char	**splitted_node_value; // a ajouter dans init et free
 	int		grid_width;
 	int		grid_height;
 	t_node	**grid;
@@ -98,6 +101,9 @@ int		ft_nb_of_elements_on_line(t_env *env, char *line);
 void	ft_get_grid_values(t_env *env);
 void	ft_get_grid_line(t_env *env, int y);
 
+int	ft_hexastr_to_int(t_env *env, char *str);
+int	ft_hexa_value(t_env *env, char c);
+
 // envent manager
 void	ft_event_manager(t_env *env);
 int		ft_exit_cross_pressed(t_env *env);
@@ -116,7 +122,7 @@ void	ft_rotation_trim_manager_th(int key, t_env *env);
 void	ft_rotation_trim_manager_p(int key, t_env *env);
 
 // bresenham
-void	ft_print_line(t_env *env, t_node pt_a, t_node pt_b, int color);
+void	ft_print_line(t_env *env, t_node pt_a, t_node pt_b);
 void	ft_print_line_case_1(t_env *env, t_node pt_a, t_node pt_b, int color);
 void	ft_print_line_case_2(t_env *env, t_node pt_a, t_node pt_b, int color);
 void	ft_print_line_case_3(t_env *env, t_node pt_a, t_node pt_b, int color);

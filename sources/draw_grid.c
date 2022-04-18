@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 11:40:38 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/16 11:43:02 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/18 23:21:13 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ void	ft_draw_horizontal_lines(t_env *env)
 		x = 0;
 		while (x < env->grid_width - 1)
 		{
-			ft_print_line(env, env->grid[x][y], env->grid[x + 1][y],
-				env->chosen_color);
+			ft_print_line(env, env->grid[x][y], env->grid[x + 1][y]);
 			x++;
 		}
 		y++;
@@ -69,8 +68,7 @@ void	ft_draw_vertical_lines(t_env *env)
 		y = 0;
 		while (y < env->grid_height - 1)
 		{
-			ft_print_line(env, env->grid[x][y], env->grid[x][y + 1],
-				env->chosen_color);
+			ft_print_line(env, env->grid[x][y], env->grid[x][y + 1]);
 			y++;
 		}
 		x++;

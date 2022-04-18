@@ -6,7 +6,7 @@
 #    By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/05 17:41:42 by ybellot           #+#    #+#              #
-#    Updated: 2022/04/18 17:56:25 by ybellot          ###   ########.fr        #
+#    Updated: 2022/04/18 22:24:33 by ybellot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ ft_substr.c \
 ft_strjoin.c \
 ft_strtrim.c \
 ft_split.c \
+ft_splitlen.c \
 ft_itoa.c \
 ft_uitoa.c \
 ft_strmapi.c\

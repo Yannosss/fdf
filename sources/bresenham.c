@@ -6,33 +6,33 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 11:17:22 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/16 11:23:54 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/18 23:20:24 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_print_line(t_env *env, t_node pt_a, t_node pt_b, int color)
+void	ft_print_line(t_env *env, t_node pt_a, t_node pt_b)
 {
 	float	slope;
 
 	if (pt_a.x_screen > pt_b.x_screen)
-		ft_print_line(env, pt_b, pt_a, color);
+		ft_print_line(env, pt_b, pt_a);
 	slope = ((float)pt_b.y_screen - (float)pt_a.y_screen)
 		/ ((float)pt_b.x_screen - (float)pt_a.x_screen);
 	if (slope > 0)
 	{
 		if (slope <= 1)
-			ft_print_line_case_1(env, pt_a, pt_b, color);
+			ft_print_line_case_1(env, pt_a, pt_b, pt_a.color);
 		else
-			ft_print_line_case_3(env, pt_a, pt_b, color);
+			ft_print_line_case_3(env, pt_a, pt_b, pt_a.color);
 	}
 	else
 	{
 		if (slope >= -1)
-			ft_print_line_case_2(env, pt_a, pt_b, color);
+			ft_print_line_case_2(env, pt_a, pt_b, pt_a.color);
 		else
-			ft_print_line_case_4(env, pt_a, pt_b, color);
+			ft_print_line_case_4(env, pt_a, pt_b, pt_a.color);
 	}
 }
 

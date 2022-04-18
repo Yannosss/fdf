@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:56:56 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/16 13:05:26 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/18 23:19:19 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	ft_nb_of_elements_on_line(t_env *env, char *line)
 	nb_of_elements = 0;
 	while (*line && *line != '\n')
 	{
-		if (!ft_isdigit(*line) && *line != '-' && *line != ' ')
-			ft_exit_mlx(env, "error: invalid map > character not accepted");
+		if (!ft_isalnum(*line) && *line != '-' && *line != ' ' && *line != ',' )
+		 	ft_exit_mlx(env, "error: invalid map > character not accepted");
 		if (*line == ' ')
 			previous_is_space = 1;
 		else if (previous_is_space)
@@ -104,6 +104,68 @@ void	ft_get_grid_line(t_env *env, int y)
 			* XY_SCALE_FACTOR;
 		env->grid[x][y].z_grid = ft_atoi(env->splitted_line[x])
 			* Z_SCALE_FACTOR;
+
+		env->splitted_node_value = ft_split(env->splitted_line[x], ',');
+		if (!env->splitted_node_value)
+			ft_exit_mlx(env, "error: split function");
+		printf("split len %ld\n", ft_splitlen(env->splitted_node_value));
+		printf("split 1 %s\n", env->splitted_node_value[0]);
+		printf("split 2 %s\n", env->splitted_node_value[1]);
+
+		if (ft_splitlen(env->splitted_node_value) == 1)
+		{
+			env->grid[x][y].z_grid = ft_atoi(env->splitted_node_value[0])
+			* Z_SCALE_FACTOR;
+			env->grid[x][y].color = COLOR_WHITE;
+		}
+		else if (ft_splitlen(env->splitted_node_value) == 2)
+		{
+			env->grid[x][y].z_grid = ft_atoi(env->splitted_node_value[0])
+			* Z_SCALE_FACTOR;
+			env->grid[x][y].color = ft_hexastr_to_int(env, env->splitted_node_value[1]);
+			printf("color hex : %s\n", env->splitted_node_value[1]);
+			printf("color int : %d\n", ft_hexastr_to_int(env, env->splitted_node_value[1]));
+		}
 		x++;
 	}
+}
+
+
+
+int	ft_hexastr_to_int(t_env *env, char *str)
+{
+	int	i;
+	int	int_value;
+
+	if (str[0] != '0' || str[1] != 'x')
+		ft_exit_mlx(env, "error: invalid map > color not hexa");
+	i = 2;
+	int_value = 0;
+	while (str[i] && str[i] != '\n')
+	{
+		int_value = 16 * int_value + ft_hexa_value(env, str[i]);
+		i++;
+	}
+	return (int_value);
+}
+
+int	ft_hexa_value(t_env *env, char c)
+{
+	if (c == 'A' || c == 'a')
+		return (10);
+	else if (c == 'B' || c == 'b')
+		return (11);
+	else if (c == 'C' || c == 'c')
+		return (12);
+	else if (c == 'D' || c == 'd')
+		return (13);
+	else if (c == 'E' || c == 'e')
+		return (14);
+	else if (c == 'F' || c == 'f')
+		return (15);
+	else if (c >= '0' && c <= '9')
+		return ((int)c - 48);
+	else
+		ft_exit_mlx(env, "error: invalid map > color not hexa");
+	return (0);
 }

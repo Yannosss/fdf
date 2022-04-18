@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:39:33 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/15 21:20:55 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/18 11:49:32 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ char	*ft_initbuffer(char *buf);
 int		ft_has_eol(char *str);
 
 // ajouts
-void	ft_free_split(char ** split_result);
+void	ft_free_split(char **split_result);
 
 #endif

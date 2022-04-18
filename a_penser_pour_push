@@ -1,0 +1,3 @@
+check .silent dans makefile
+supprimer debug.c (car printf inside)
+copier minilib mais pas les maps

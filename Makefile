@@ -11,7 +11,8 @@ SRCS += sources/exit.c
 SRCS += sources/init.c
 SRCS += sources/main.c
 SRCS += sources/print_pixel.c
-SRCS += sources/parsing_input.c
+SRCS += sources/parsing_input_1.c
+SRCS += sources/parsing_input_2.c
 SRCS += sources/convert_coordinates.c
 SRCS += sources/draw_grid.c
 
@@ -23,7 +24,8 @@ SRCS_BONUS += sources/exit.c
 SRCS_BONUS += sources/init.c
 SRCS_BONUS += sources/main.c
 SRCS_BONUS += sources/print_pixel.c
-SRCS_BONUS += sources/parsing_input.c
+SRCS_BONUS += sources/parsing_input_1.c
+SRCS_BONUS += sources/parsing_input_2.c
 SRCS_BONUS += sources/convert_coordinates.c
 SRCS_BONUS += sources/draw_grid.c
 

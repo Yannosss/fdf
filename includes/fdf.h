@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 11:13:43 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/18 23:19:55 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/19 20:35:38 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_env
 	t_img	img;
 	char	*read_line;
 	char	**splitted_line;
-	char	**splitted_node_value; // a ajouter dans init et free
+	char	**splitted_node_value;
 	int		grid_width;
 	int		grid_height;
 	t_node	**grid;
@@ -94,15 +94,17 @@ typedef struct s_env
 int		ft_draw_test_lines(t_env *env);
 void	ft_img_pixel_put(t_env *env, int x, int y, int color);
 
-// parsing input
+// parsing input 1
 void	ft_parse_input(t_env *env, char **argv);
 void	ft_get_grid_size(t_env *env);
 int		ft_nb_of_elements_on_line(t_env *env, char *line);
 void	ft_get_grid_values(t_env *env);
-void	ft_get_grid_line(t_env *env, int y);
 
-int	ft_hexastr_to_int(t_env *env, char *str);
-int	ft_hexa_value(t_env *env, char c);
+// parsing input 2
+void	ft_get_grid_line(t_env *env, int y);
+void	ft_get_splitted_node_value(t_env *env, int x, int y);
+int		ft_hexastr_to_int(t_env *env, char *str);
+int		ft_hexa_value(t_env *env, char c);
 
 // envent manager
 void	ft_event_manager(t_env *env);

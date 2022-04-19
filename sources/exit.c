@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:07:12 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/16 18:53:50 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/19 17:07:40 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	ft_exit_mlx(t_env *env, char *message)
 	{
 		ft_free_split(env->splitted_line);
 		env->splitted_line = NULL;
+	}
+	if (env->splitted_node_value)
+	{
+		ft_free_split(env->splitted_node_value);
+		env->splitted_node_value = NULL;
 	}
 	if (env->grid)
 		ft_free_grid(env);

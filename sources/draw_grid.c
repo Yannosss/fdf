@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 11:40:38 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/18 23:21:13 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/19 17:12:17 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_draw_black_screen(t_env *env)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			ft_img_pixel_put(env, x, y, COLOR_BLACK);
+			ft_img_pixel_put(env, x, y, env->chosen_color);
 			x++;
 		}
 		y++;

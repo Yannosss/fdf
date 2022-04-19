@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:07:57 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/16 12:19:58 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/19 17:13:08 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_init_part_1(t_env *env)
 	env->img.endian = 0;
 	env->read_line = NULL;
 	env->splitted_line = NULL;
+	env->splitted_node_value = NULL;
 	env->grid_width = 0;
 	env->grid_height = 0;
 	env->grid = NULL;
@@ -43,7 +44,7 @@ void	ft_init_part_2(t_env *env)
 	env->trim_th = 0;
 	env->trim_p = 0;
 	env->trim_zoom = 1;
-	env->color_list[0] = COLOR_WHITE;
+	env->color_list[0] = COLOR_BLACK;
 	env->color_list[1] = COLOR_RED;
 	env->color_list[2] = COLOR_GREEN;
 	env->color_list[3] = COLOR_BLUE;

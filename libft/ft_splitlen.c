@@ -6,7 +6,7 @@
 /*   By: ybellot <ybellot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:19:32 by ybellot           #+#    #+#             */
-/*   Updated: 2022/04/18 22:20:02 by ybellot          ###   ########.fr       */
+/*   Updated: 2022/04/20 16:46:12 by ybellot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_splitlen(char **split)
 {
 	size_t	size;
 
+	if (!split)
+		return (0);
 	size = 0;
 	while (*split != 0)
 	{
